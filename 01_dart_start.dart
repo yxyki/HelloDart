@@ -3,5 +3,5 @@ void variables(){
   var name='Voyager';
   var year=1977;
   var antennaDiameter=3.7;
-  
+
 }

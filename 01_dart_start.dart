@@ -14,7 +14,7 @@ void variables(){
   print('name is $name,year is $year,antennaDiameter is $antennaDiameter,flybyObjects is $flybyObjects,image is$image');
 }
 
-void outyear(var year){
+void outyear(int year){
   if(year>=2001)
   print('21st century');
   else if(year>=1901)

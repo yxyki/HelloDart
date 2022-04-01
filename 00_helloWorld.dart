@@ -14,6 +14,7 @@ void variables(){
   print('name is $name,year is $year,antennaDiameter is $antennaDiameter,flybyObjects is $flybyObjects,image is$image');
 }
 
+//流程控制语句（https://dart.cn/samples#control-flow-statements）
 void control_flow(int year){
   for (int month = 1; month <= 12; month++) 
     print( month );
@@ -23,11 +24,13 @@ void control_flow(int year){
     print('20 century');
 }
 
+//函数（https://dart.cn/samples#functions）
 int fibonacci(int n) {
   if (n == 0 || n == 1) return n;
   else return fibonacci(n - 1) + fibonacci(n - 2);
 }
 
+//类（https://dart.cn/samples#classes）
 class Spacecraft{
   String name;
   DateTime? launchDate;

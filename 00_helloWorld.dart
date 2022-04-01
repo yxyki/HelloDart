@@ -54,7 +54,7 @@ void main(){
     print('Hello world!');   //你好世界
     variables();  //变量
     control_flow(1986);  //流程控制
-    fibonacci(8);   //函数
+    print(fibonacci(8));   //函数
 
     var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5));   //类
     voyager.describe();

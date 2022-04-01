@@ -58,5 +58,6 @@ void main(){
 
     var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5));   //类
     voyager.describe();
-    print(voyager);
+    var voyager3=Spacecraft.unlaunched('unlaunched |||');
+    voyager3.describe();
 }

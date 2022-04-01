@@ -9,24 +9,23 @@ void variables(){
     'url':'//path/to/saturn.jpg'
   };
   for (final object in flybyObjects) {       //循环输出
-  print(object);
-}
+    print(object);
+  }
   print('name is $name,year is $year,antennaDiameter is $antennaDiameter,flybyObjects is $flybyObjects,image is$image');
 }
 
 void control_flow(int year){
-  for (int month = 1; month <= 12; month++) {
-  print(month);
-  }
+  for (int month = 1; month <= 12; month++) 
+    print(month);
   if(year>=2001)
-  print('21st century');
+    print('21st century');
   else if(year>=1901)
-  print('20 century');
+    print('20 century');
 }
 
 int fibonacci(int n) {
   if (n == 0 || n == 1) return n;
-  return fibonacci(n - 1) + fibonacci(n - 2);
+  else return fibonacci(n - 1) + fibonacci(n - 2);
 }
 
 class Spacecraft{

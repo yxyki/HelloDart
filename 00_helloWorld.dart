@@ -16,9 +16,9 @@ void variables(){
 
 void control_flow(int year){
   for (int month = 1; month <= 12; month++) 
-    print(month);
+    print( month );
   if(year>=2001)
-    print('21st century');
+    print('21 century');
   else if(year>=1901)
     print('20 century');
 }
@@ -49,14 +49,18 @@ class Spacecraft{
   }
 }
 
+void classfunc(){
+    var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5));   //类
+    voyager.describe();
+    var voyager3=Spacecraft.unlaunched('unlaunched |||');
+    voyager3.describe();
+}
+
 void main(){
     print('Hello world!');   //你好世界
     variables();  //变量
     control_flow(1986);  //流程控制
     print(fibonacci(8));   //函数
-
-    var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5));   //类
-    voyager.describe();
-    var voyager3=Spacecraft.unlaunched('unlaunched |||');
-    voyager3.describe();
+    classfunc();     //类
+    
 }

@@ -1,3 +1,4 @@
+import 'dart:math';
 //变量（https://dart.cn/samples#variables）
 void variables() {
   var name = 'Voyager'; //dart支持类型推断，大多数变量不需要显示指定类型

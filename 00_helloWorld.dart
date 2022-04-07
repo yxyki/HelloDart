@@ -1,6 +1,10 @@
 import 'dart:math';
+
 //变量（https://dart.cn/samples#variables）
 void variables() {
+  print('\n');
+  print('#'*40);
+  print('变量');
   var name = 'Voyager'; //dart支持类型推断，大多数变量不需要显示指定类型
   var year = 1977;
   var antennaDiameter = 3.7;
@@ -19,6 +23,9 @@ void variables() {
 
 //流程控制语句（https://dart.cn/samples#control-flow-statements）
 void control_flow(int year) {
+  print('\n');
+  print('#'*40);
+  print('流程控制');
   for (int month = 1; month <= 12; month++) print(month);
   if (year >= 2001)
     print('21 century');
@@ -27,6 +34,9 @@ void control_flow(int year) {
 
 //函数（https://dart.cn/samples#functions）
 int fibonacci(int n) {
+  print('\n');
+  print('#'*40);
+  print('函数');
   if (n == 0 || n == 1)
     return n;
   else
@@ -55,6 +65,9 @@ class Spacecraft {
 }
 
 void classfunc() {
+  print('\n');
+  print('#'*40);
+  print('类');
   var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5)); //类
   voyager.describe();
   var voyager3 = Spacecraft.unlaunched('unlaunched |||');

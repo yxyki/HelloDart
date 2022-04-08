@@ -1,4 +1,6 @@
 import 'dart:math';
+import 'dart:async';
+import 'dart:io';
 
 //变量（https://dart.cn/samples#variables）
 void variables() {
@@ -163,13 +165,73 @@ void interfacefunc() {
 }
 
 //异步（https://dart.cn/samples#async）
-Future<void> the_async() async{
+Future<void> the_async() async {
   print('#' * 40);
   print('异步');
 
-  const oneSecond=Duration(seconds 1);
+  const oneSecond = Duration(seconds: 1);
 
-  Future<void>
+  Future<void> printWithDelay1(String message) async {
+    await Future.delayed(oneSecond);
+    print(message);
+  }
+
+  printWithDelay1('过了1秒钟.1');
+  print('done 1.');
+
+  Future<void> printWithDelay2(String message) {
+    return Future.delayed(oneSecond).then((_) {
+      print(message);
+    });
+  }
+
+  printWithDelay2('过了1秒钟.2');
+  print('done 2.');
+
+  Future<void> createDescription(Iterable<String> objects) async {
+    for (final object in objects) {
+      try {
+        var file = File('$object.txt');
+        if (await file.exists()) {
+          var modified = await file.lastModified();
+          print('File for $object already exists.It was modified on $modified');
+          continue;
+        }
+        await file.create();
+        await file.writeAsString('Start Describing $object in this file.');
+        print('File for $object created');
+      } on IOException catch (e) {
+        print('Cannot create description for $object:$e');
+      }
+    }
+  }
+
+  var the_objects = ['飞机', '火箭', '铲土车'];
+  createDescription(the_objects);
+
+  await Future.delayed(Duration(seconds: 5));
+}
+
+//异常（https://dart.cn/samples#exceptions）
+Future<void> show_descri(flybyObjects) async {
+  try {
+    for (final object in flybyObjects) {
+      var description = await File('$object.txt').readAsString();
+      print(description);
+    }
+  } on IOException catch (ex) {
+    print('Could not describe object:$ex');
+  } finally {
+    flybyObjects.clear();
+  }
+}
+
+void exceptions() {
+  print('#' * 40);
+  print('异常');
+
+  var flybyObjects = ['飞机', '火箭', '铲土车', '手机'];
+  show_descri(flybyObjects);
 }
 
 void main() {
@@ -182,4 +244,6 @@ void main() {
   extclass(); //扩展类
   mixinsf(); //Mixins
   interfacefunc(); //接口和抽象类
+  the_async(); //异步
+  exceptions(); //异常
 }

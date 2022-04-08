@@ -162,6 +162,16 @@ void interfacefunc() {
   mock.describe();
 }
 
+//异步（https://dart.cn/samples#async）
+Future<void> the_async() async{
+  print('#' * 40);
+  print('异步');
+
+  const oneSecond=Duration(seconds 1);
+
+  Future<void>
+}
+
 void main() {
   print('Hello world!'); //你好世界
   variables(); //变量

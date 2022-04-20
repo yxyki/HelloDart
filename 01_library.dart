@@ -69,8 +69,19 @@ void dartCore() {
   assert(numbers
       .hasMatch(someDights)); //Check whether the reg has a match in a string
   for (final match in numbers.allMatches(someDights)) print(match.group(0));
+}
 
-  //集合
+//集合（https://dart.cn/guides/libraries/library-tour#collections）
+void Collections() {
+  print('#' * 40);
+  print('集合');
+
+  ListFunc();
+  SetsFunc();
+  MapFunc();
+}
+
+void ListFunc() {
   //List
   var grains = <String>[]; //Create an empty List
   assert(grains.isEmpty);
@@ -81,8 +92,54 @@ void dartCore() {
   var appleIndex = fruits.indexOf('apples'); //删除指定位置的元素
   fruits.removeAt(appleIndex);
   assert(fruits.length == 4);
+  fruits.clear(); //移除所有元素
+  assert(fruits.isEmpty);
+  var vegetables = List.filled(99, 'eggplants'); //使用一种结构构造List
+  assert(vegetables.every((v) => v == 'eggplants'));
+
+  var fruit = ['apples', 'bananas']; //使用indexof()函数查找一个元素的下标值
+  assert(fruit.indexOf('apples') == 0);
+  assert(fruit[0] == 'apples');
+  fruits = ['apples', 'bananas', 'grapes'];
+  fruits.sort((a, b) => a.compareTo(b)); //使用sort函数为List元素排序
+  assert(fruits.indexOf('apples') == 0);
+  var fruits2 = <String>[]; //指定List包含元素的类型
+  fruits2.add('apples');
+  var Fruit = fruits2[0];
+  assert(Fruit == 'apples');
+}
+
+void SetsFunc() {
+  //Sets
+  var ingredients = <String>{};
+  ingredients.addAll(['gold', 'titanium', 'xenon']); //添加元素
+  assert(ingredients.length == 3);
+  ingredients.add('gold'); //添加重复元素无效
+  assert(ingredients.length == 3);
+  ingredients.remove('gold');
+  assert(ingredients.length == 2); //删除元素
+  var atomicNumbers = Set.from(['79', '88', '60']);
+  assert(atomicNumbers.length == 3);
+
+  ingredients.add('gold'); //使用contains和containsAll判断是否包含元素
+  assert(ingredients.contains('xenon'));
+  assert(ingredients.containsAll(['gold', 'xenon']));
+
+  var nobelGases = Set.from(['xenon', 'argon']); //求两个集合的交集
+  var intersection = ingredients.intersection(nobelGases);
+  assert(intersection.contains('xenon'));
+}
+
+void MapFunc() {
+  //Maps
+  var hawaiianBeaches = {
+    'Oahu': ['Waikiki', 'Kailuo', 'Waimanalo'],
+    'Big Island': ['Wailed Boy', 'Palolu Beach'],
+    'Kauai': ['Hanale', 'Poipu']
+  };
 }
 
 void main(List<String> args) {
   dartCore();
+  Collections();
 }

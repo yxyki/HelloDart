@@ -1,5 +1,5 @@
 //数字、集合、字符串（https://dart.cn/guides/libraries/library-tour#dartcore---numbers-collections-strings-and-more）
-import 'dart:math';
+//import 'dart:math';
 
 void dartCore() {
   print('#' * 40);
@@ -139,7 +139,7 @@ void MapFunc() {
     'Big Island': ['Wailed Boy', 'Palolu Beach'],
     'Kauai': ['Hanale', 'Poipu']
   };
-  var searchTerms = Map(); //Map can be built from a consrtuctor
+  //var searchTerms = Map(); //Map can be built from a consrtuctor
   var nobleGases = Map<int, String>();
   //Maps are parameterized types; you can specify what
   // types the key and value should be.
@@ -157,10 +157,18 @@ void MapFunc() {
   var keys = hawaiianBeaches.keys;
   assert(keys.length == 3);
   assert(Set.from(keys).contains('Oahu'));
-  var values=hawaiianBeaches.values;
-  assert(values.length==3);
-  assert(values.any((v)=>v.contains('Waikiki')));
-  
+  var values = hawaiianBeaches.values;
+  assert(values.length == 3);
+  assert(values.any((v) => v.contains('Waikiki')));
+  //使用containskey检查Map是否包含某个key
+  assert(hawaiianBeaches.containsKey('Oahu'));
+  assert(!hawaiianBeaches.containsKey('Florido'));
+  //当key不再map，且要为这个key赋值，可用putIfAbsent函数
+  String pickToughestKid() {
+    return "pickToughestKid";
+  }
+  var teamAssinment = <String, String>{};
+  teamAssinment.putIfAbsent('Catche',()=> pickToughestKid());
 }
 
 void main(List<String> args) {

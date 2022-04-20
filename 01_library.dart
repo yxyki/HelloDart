@@ -1,4 +1,6 @@
 //数字、集合、字符串（https://dart.cn/guides/libraries/library-tour#dartcore---numbers-collections-strings-and-more）
+import 'dart:math';
+
 void dartCore() {
   print('#' * 40);
   print('数字，集合，字符串等库');
@@ -137,6 +139,28 @@ void MapFunc() {
     'Big Island': ['Wailed Boy', 'Palolu Beach'],
     'Kauai': ['Hanale', 'Poipu']
   };
+  var searchTerms = Map(); //Map can be built from a consrtuctor
+  var nobleGases = Map<int, String>();
+  //Maps are parameterized types; you can specify what
+  // types the key and value should be.
+
+  nobleGases = {54: 'xenon'};
+  //Retrieve a value with a key
+  assert(nobleGases[54] == 'xenon');
+  //Check whether a map contains a key
+  assert(nobleGases.containsKey(54));
+  //Remove a key and its value
+  nobleGases.remove(54);
+  assert(!nobleGases.containsKey(54));
+
+  //从一个map中检索所有的key或所有的value
+  var keys = hawaiianBeaches.keys;
+  assert(keys.length == 3);
+  assert(Set.from(keys).contains('Oahu'));
+  var values=hawaiianBeaches.values;
+  assert(values.length==3);
+  assert(values.any((v)=>v.contains('Waikiki')));
+  
 }
 
 void main(List<String> args) {

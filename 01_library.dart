@@ -200,11 +200,59 @@ void sharedCollection() {
   //获取匹配条件的元素，检查部分或所有元素是否匹配某个条件
   bool isDecaffeinated(String teaName) => teaName == 'chamomile';
   var decaffeinated = teas.where((tea) => isDecaffeinated(tea));
+  assert(decaffeinated.contains('chamomile'));
   assert(teas.any(isDecaffeinated));
-  assert(!teas.every((isDecaffeinated);
+  assert(!teas.every((isDecaffeinated)));
+}
+
+//URIs(https://dart.cn/guides/libraries/library-tour#uris)
+void urlsf() {
+  print('#' * 40);
+  print('URIs');
+  //使用encoderFull和decoderFull方法对URI中除特殊字符外的字符进行编解码
+  var uri = 'https://example.org/api?foo=some message';
+  var encoded = Uri.encodeFull(uri);
+  assert(encoded == 'https://example.org/api?foo=some%20message');
+  var decoded = Uri.decodeFull(encoded);
+  assert(uri == decoded); //空格
+  //使用encodeComponent和decodeCompent对具有特殊含义的所有字符串字符
+  encoded = Uri.encodeComponent(uri);
+  assert(encoded == 'https%3A%2F%2Fexample.org%2Fapi%3Ffoo%3Dsome%20message');
+  decoded = Uri.decodeComponent(encoded);
+  assert(uri == decoded);
+  //解析URI
+  var uri2 = Uri.parse('https://example.org:8080/foo/bar#frag');
+  assert(uri2.scheme == 'https');
+  assert(uri2.host == 'example.org');
+  assert(uri2.path == '/foo/bar');
+  assert(uri2.fragment == 'frag');
+  assert(uri2.origin == 'https://example.org:8080');
+  //构建URI
+  var uri3 = Uri(
+      scheme: 'https', host: 'example.org', path: '/foo/bar', fragment: 'frag');
+  assert(uri3.toString() == 'https://example.org/foo/bar#frag');
+}
+
+//日期和时间(https://dart.cn/guides/libraries/library-tour#dates-and-times)
+void dateAndTime() {
+  print('#' * 40);
+  print('日期和时间');
+  //Get the current date and time
+  var now = DateTime.now();
+  //Create a new DateTime with the local time zone
+  var y2k = DateTime(2000);
+  //Specify the month and day
+  y2k = DateTime(2000, 1, 2);
+  //Specify the date as a UTC time
+  y2k = DateTime.utc(2000);
+  //Specify a date and time in ms since the Unix epoch
+  y2k = DateTime.fromMillisecondsSinceEpoch(94668480000, isUtc: true);
+  //Parse an 150 8601 date
+  y2k = DateTime.parse('2000-01-01T00:00:00Z');
 }
 
 void main(List<String> args) {
   dartCore();
   Collections();
+  urlsf();
 }

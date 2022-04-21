@@ -81,6 +81,7 @@ void Collections() {
   ListFunc();
   SetsFunc();
   MapFunc();
+  sharedCollection();
 }
 
 void ListFunc() {
@@ -163,12 +164,44 @@ void MapFunc() {
   //使用containskey检查Map是否包含某个key
   assert(hawaiianBeaches.containsKey('Oahu'));
   assert(!hawaiianBeaches.containsKey('Florido'));
-  //当key不再map，且要为这个key赋值，可用putIfAbsent函数
+  //当key不在map，且要为这个key赋值，可用putIfAbsent函数
   String pickToughestKid() {
     return "pickToughestKid";
   }
+
   var teamAssinment = <String, String>{};
-  teamAssinment.putIfAbsent('Catche',()=> pickToughestKid());
+  teamAssinment.putIfAbsent('Catche', () => pickToughestKid());
+  assert(teamAssinment['Catche'] != null);
+}
+
+void sharedCollection() {
+  //公共集合
+  //使用isEmpty和isNotEmpty检查List,set和map是否包含元素
+  var coffees = <String>[];
+  var teas = ['green', 'black', 'chamomile', 'earl grey'];
+  assert(coffees.isEmpty);
+  assert(teas.isNotEmpty);
+  //使用forEach可以让list,set或map中每个元素都使用一个方法
+  teas.forEach((tea) => print('I drink $tea'));
+  //当在map中调用forEach时，须带有两个参数key,value
+  var hawaiianBeaches = {
+    'Oahu': ['Waikiki', 'Kailuo', 'Waimanalo'],
+    'Big Island': ['Wailed Boy', 'Palolu Beach'],
+    'Kauai': ['Hanale', 'Poipu']
+  };
+  hawaiianBeaches.forEach((key, value) {
+    print('I want to visit $key and swim at $value');
+  });
+  //Iterable提供map()方法
+  var loudTeas = teas.map((tea) => tea.toUpperCase());
+  loudTeas.forEach(print);
+  //强制在每个项目立即调用函数
+  loudTeas = teas.map((tea) => tea.toUpperCase()).toList();
+  //获取匹配条件的元素，检查部分或所有元素是否匹配某个条件
+  bool isDecaffeinated(String teaName) => teaName == 'chamomile';
+  var decaffeinated = teas.where((tea) => isDecaffeinated(tea));
+  assert(teas.any(isDecaffeinated));
+  assert(!teas.every((isDecaffeinated);
 }
 
 void main(List<String> args) {

@@ -1,6 +1,8 @@
 //数字、集合、字符串（https://dart.cn/guides/libraries/library-tour#dartcore---numbers-collections-strings-and-more）
 //import 'dart:math';
 
+import 'dart:math';
+
 void dartCore() {
   print('#' * 40);
   print('数字，集合，字符串等库');
@@ -240,19 +242,65 @@ void dateAndTime() {
   //Get the current date and time
   var now = DateTime.now();
   //Create a new DateTime with the local time zone
-  var y2k = DateTime(2000);
+  var y2k = DateTime(2000); //January 1,2000
   //Specify the month and day
-  y2k = DateTime(2000, 1, 2);
+  y2k = DateTime(2000, 1, 2); //January 2,2000
   //Specify the date as a UTC time
-  y2k = DateTime.utc(2000);
+  y2k = DateTime.utc(2000); // 1/1/2000,UTC
   //Specify a date and time in ms since the Unix epoch
   y2k = DateTime.fromMillisecondsSinceEpoch(94668480000, isUtc: true);
   //Parse an 150 8601 date
   y2k = DateTime.parse('2000-01-01T00:00:00Z');
+  y2k = DateTime.utc(2000); // 1/1/2000,UTC
+  assert(y2k.millisecondsSinceEpoch == 946684800000);
+  var unixEpoch = DateTime.utc(1970); // 1/1/1970,UTC
+  assert(unixEpoch.millisecondsSinceEpoch == 0);
+
+  //Add one year
+  var y2001 = y2k.add(const Duration(days: 366));
+  assert(y2001.year == 2001);
+  //Subtract 30 days
+  var december2000 = y2001.subtract(const Duration(days: 30));
+  assert(december2000.year == 2000);
+  assert(december2000.month == 12);
+  //Calculate the difference between two dates
+  //Returns a Dyration object
+  var duration = y2001.difference((y2k));
+  assert(duration.inDays == 366);
+}
+
+//数学和随机数(https://dart.cn/guides/libraries/library-tour#dartmath---math-and-random)
+void mathAndRandom() {
+  print('#' * 40);
+  print('数学和随机数');
+  //三角函数
+  assert(cos(pi) == -1.0);
+  var degrees = 30;
+  var radians = degrees * (pi / 180);
+  var sinOf30degrees = sin(radians);
+  assert((sinOf30degrees - 0.5).abs() < 0.01);
+  //最大值和最小值
+  assert(max(1, 1000) == 1000);
+  assert(min(1, -1000) == -1000);
+  //数字常数
+  print(e);
+  print(pi);
+  print(sqrt2);
+  //随机数
+  var random = Random();
+  var temp;
+  temp = random.nextDouble();
+  print('浮点随机数:$temp');
+  temp = random.nextInt(10);
+  print('整型随机数:$temp');
+  temp = random.nextBool();
+  print('随机布尔值:$temp');
 }
 
 void main(List<String> args) {
   dartCore();
   Collections();
   urlsf();
+  dateAndTime();
+  mathAndRandom();
 }

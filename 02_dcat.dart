@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 //命令行程序(https://dart.cn/tutorials/server/cmdline#overview-of-the-dcat-app-code)
-import 'package:args/args.dart'
+import 'package:args/args.dart';
 
 const lineNumber = 'line-number';
 

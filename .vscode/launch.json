@@ -3,5 +3,16 @@
     // Hover to view descriptions of existing attributes.
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
-    "configurations": []
+    "configurations": [
+        {
+            "name":"DCat",
+            "type": "dart",
+            "request": "launch",
+            "program": "03_dcat.dart",
+            "args": [
+                "-n",
+                "123.txt"
+            ],
+        }
+    ]
 }

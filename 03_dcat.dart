@@ -18,11 +18,12 @@ Future<void> dcat(List<String> paths, {bool showLineNumbers = false}) async {
   if (paths.isEmpty) {
     print('type exit to quit.');
     while (true) {
-      stdout.write('>');
+      stdout.write('>>>');
       String? line = stdin.readLineSync();
       print('${line}\n');
 
       if (line?.toLowerCase() == 'exit') {
+        //修改终止条件
         print('bye.');
         break;
       }
